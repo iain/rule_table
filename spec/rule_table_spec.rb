@@ -63,4 +63,29 @@ RSpec.describe RuleTable do
     expect(TABLE.match(device)).to eq :unknown
   end
 
+  it "can debug" do
+    device = OpenStruct.new(
+      os: "iOS",
+      resolution: OpenStruct.new(
+        width: 700,
+        height: 400,
+      ),
+      user_agent_misc: "(Inky)",
+    )
+
+    result, trace = TABLE.match_with_trace(device)
+
+    expect(result).to eq :ios_lo
+    expect(trace).to eq [
+      {
+        target: :ios_hi,
+        matched: [:os]
+      },
+      {
+        target: :ios_lo,
+        matched: [:os, :width, :height]
+      },
+    ]
+  end
+
 end

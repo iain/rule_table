@@ -30,6 +30,21 @@ module RuleTable
       }.first
     end
 
+    def match_with_trace(object)
+      trace = []
+      result = @rules.find { |(target, matchers)|
+        partial_trace = { target: target, matched: [] }
+        matchers.all? { |m|
+          m.matches?(object).tap { |match_result|
+            partial_trace[:matched] << m.matcher_name if match_result
+          }
+        }.tap {
+          trace << partial_trace
+        }
+      }.first
+      [ result, trace ]
+    end
+
   end
 
   class TableDefiner
@@ -44,15 +59,18 @@ module RuleTable
     end
 
     def match(matcher_name, *args)
-      ConfiguredMatcher.new(RuleTable.matchers.fetch(matcher_name), *args)
+      ConfiguredMatcher.new(matcher_name, *args)
     end
 
   end
 
   class ConfiguredMatcher
 
-    def initialize(matcher, *args)
-      @matcher = matcher
+    attr_reader :matcher_name
+
+    def initialize(matcher_name, *args)
+      @matcher_name = matcher_name
+      @matcher = RuleTable.matchers.fetch(matcher_name)
       @args    = args
     end
 

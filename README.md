@@ -94,6 +94,20 @@ device = OpenStruct.new(
 TABLE.match(device) # => :ereader
 ```
 
+Finally, there is also a way to debug why a certain target was found. Simply
+replace the message send `match` with `match_with_trace`.
+
+```
+target, trace = TABLE.match_with_trace(device)
+target # => :ereader
+trace # =>
+# [
+#   { target: :ios_hi,  matched: [] },
+#   { target: :ios_lo,  matched: [] },
+#   { target: :ereader, matched: [:os, :misc] }
+# ]
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
