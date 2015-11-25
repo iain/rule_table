@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["iain"]
   spec.email         = ["iain@iain.nl"]
 
-  spec.summary       = %q{A simple implementation of a rule table with lot's of metaprogramming.}
+  spec.summary       = %q{A simple implementation of a rule table with lots of metaprogramming.}
   spec.homepage      = "https://github.com/iain/rule_table"
   spec.license       = "MIT"
 
