@@ -1,8 +1,9 @@
 # RuleTable
 
-Based on RubyTapas episode 358, this is a simple rule table, but with a more
-fancy API. In fact, I'm using all of Ruby's meta programming tricks to get here.
-That might not be your cup of tea and that's okay.
+Based on [RubyTapas episode 358](http://www.rubytapas.com/episodes/358-Rule-Table),
+this is a simple rule table, but with a more fancy API. In fact, I'm using all
+of Ruby's meta programming tricks to get here. That might not be your cup of tea
+and that's okay.
 
 In short, RuleTable allows you to flatten the state space of a problem.
 Instead of branching, and branching, and branching again, we can see all the
