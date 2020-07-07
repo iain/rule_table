@@ -1,7 +1,8 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rule_table/version'
+require "rule_table/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rule_table"
@@ -9,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["iain"]
   spec.email         = ["iain@iain.nl"]
 
-  spec.summary       = %q{A simple implementation of a rule table with lots of metaprogramming.}
+  spec.summary       = "A simple implementation of a rule table with lots of metaprogramming."
   spec.homepage      = "https://github.com/iain/rule_table"
   spec.license       = "MIT"
 
@@ -18,7 +19,4 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec"
 end
